@@ -1,3 +1,7 @@
+<script>
+   export let title = "";
+</script>
+
 <div class="main-title">
-    <h2>Add expenses</h2>
+    <h2>{title?.toUpperCase()}</h2>
 </div>

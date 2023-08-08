@@ -4,4 +4,5 @@
 </script>
 
 <Navbar />
+<Title title="add expenses" />
 <Title />
