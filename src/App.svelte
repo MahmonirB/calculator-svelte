@@ -1,8 +1,12 @@
 <script>
-  import Navbar from "./component/Navbar.svelte";
-  import Title from "./component/Title.svelte";
+  import ExpenseList from "./component/ExpenseList.svelte";
+import Navbar from "./component/Navbar.svelte";
+  import expensesData from "./expenses";
+  let expenses = [...expensesData];
+  console.log(expenses)
 </script>
 
 <Navbar />
-<Title title="add expenses" />
-<Title />
+<main class="main" >
+  <ExpenseList {expenses} />
+</main>
