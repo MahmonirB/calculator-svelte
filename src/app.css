@@ -187,6 +187,7 @@ Single Expense
   justify-content: space-between;
   text-transform: capitalize;
   align-items: center;
+  margin: 2rem;
   margin-bottom: 2rem;
   padding: 1.3rem 1rem;
   border-radius: var(--mainBorderRadius);

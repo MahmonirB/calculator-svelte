@@ -3,7 +3,6 @@
 import Navbar from "./component/Navbar.svelte";
   import expensesData from "./expenses";
   let expenses = [...expensesData];
-  console.log(expenses)
 </script>
 
 <Navbar />
