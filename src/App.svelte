@@ -9,7 +9,6 @@
   }
   function edit(event) {
     const { id } = event.detail;
-    console.log("edit: " + id);
     // edit logic
   }
   const contextObj = {
