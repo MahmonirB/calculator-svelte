@@ -7,14 +7,19 @@
   function removeExpense(id) {
     expenses = expenses.filter(item => item.id !== id);
   }
+  function edit(event) {
+    const { id } = event.detail;
+    console.log("edit: " + id);
+    // edit logic
+  }
   const contextObj = {
     remove: removeExpense,
-    edit: null,
+    // other context props
   }
   setContext('context', contextObj);
 </script>
 
 <Navbar />
 <main class="main" >
-  <ExpenseList {expenses} />
+  <ExpenseList {expenses} on:edit={edit} />
 </main>

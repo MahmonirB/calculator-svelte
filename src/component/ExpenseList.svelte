@@ -11,7 +11,7 @@
 
 <section>
     {#each expenses as item, index}
-      <Expense {...item} />
+      <Expense {...item} on:edit />
     {:else}
       <h2>List is empty</h2>
     {/each}

@@ -1,9 +1,10 @@
 <script>
-    import { getContext } from "svelte";
+    import { createEventDispatcher, getContext } from "svelte";
     export let name = '';
     export let amount = 0;
     export let id;
     let displayAmount = false;
+    const dispatch = createEventDispatcher();
     const { remove: removeExpense } = getContext('context');
     function toggleAmount() { displayAmount = !displayAmount; }
 </script>
@@ -20,8 +21,8 @@
     {/if}
     </div>
     <div class="expense-buttons">
-        <button class="expense-btn edit-btn">
-            <i class="fas fa-pen"></i>
+        <button class="expense-btn edit-btn" on:click={() => dispatch('edit', { id })}>
+            <i class="fas fa-pen" ></i>
         </button>
         <button class="expense-btn delete-btn" on:click={removeExpense(id)}>
             <i class="fas fa-trash"></i>
