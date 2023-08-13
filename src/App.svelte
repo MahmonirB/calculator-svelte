@@ -3,7 +3,11 @@
   import ExpenseList from "./component/ExpenseList.svelte";
   import Navbar from "./component/Navbar.svelte";
   import expensesData from "./expenses";
+  import Total from "./component/Total.svelte";
   let expenses = [...expensesData];
+  $: total = expenses?.reduce((acc, value) => {
+    return (acc += value?.amount)
+  }, 0)
   function removeExpense(id) {
     expenses = expenses.filter(item => item.id !== id);
   }
@@ -27,6 +31,7 @@
 
 <Navbar />
 <main class="main" >
+  <Total title="Total amount" {total} />
   <ExpenseList {expenses} on:edit={edit} />
   <button
     type="button"
