@@ -62,7 +62,9 @@ a {
   color: var(--mainBlack);
 }
 main {
-  padding: 24px;
+  width: 500px;
+  margin: auto;
+  padding: 48px 0;
 }
 /* 
 ====== 

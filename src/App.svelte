@@ -37,7 +37,8 @@
   <ExpenseList {expenses} on:edit={edit} />
   <button
     type="button"
-    class={`btn btn-primary btn-block ${expenses.length ? '' : 'disabled'}`}
+    class="btn btn-primary btn-block"
+    class:disabled={!expenses.length}
     disabled={!expenses.length}
     on:click={clearExpenses}
   >
