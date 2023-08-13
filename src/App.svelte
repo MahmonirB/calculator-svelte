@@ -4,6 +4,7 @@
   import Navbar from "./component/Navbar.svelte";
   import expensesData from "./expenses";
   import Total from "./component/Total.svelte";
+  import ExpenseForm from "./ExpenseForm.svelte";
   let expenses = [...expensesData];
   $: total = expenses?.reduce((acc, value) => {
     return (acc += value?.amount)
@@ -31,11 +32,13 @@
 
 <Navbar />
 <main class="main" >
+  <ExpenseForm />
   <Total title="Total amount" {total} />
   <ExpenseList {expenses} on:edit={edit} />
   <button
     type="button"
-    class={`btn btn-primary btn-block ${expenses.length ? '' : 'disabled'}`}
+    class="btn btn-primary btn-block"
+    class:disabled={!expenses.length}
     disabled={!expenses.length}
     on:click={clearExpenses}
   >
