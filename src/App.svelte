@@ -5,6 +5,7 @@
   import expensesData from "./expenses";
   import Total from "./component/Total.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
+  let selectedExpense;
   let expenses = [...expensesData];
   $: total = expenses?.reduce((acc, value) => {
     return (acc += value?.amount)
@@ -13,9 +14,9 @@
     expenses = expenses.filter(item => item.id !== id);
   }
 
-  function edit(event) {
+  function editExpense(event) {
     const { id } = event.detail;
-    // edit logic
+    selectedExpense = expenses?.find(element => element.id === id);
   }
 
   function clearExpenses() {
@@ -27,9 +28,16 @@
     expenses = [newExpense, ...expenses];
   }
 
+  function modifyExpense({ name, amount, id }) {
+    expenses = expenses?.map(item => {
+      return item?.id === id ? {...item, name, amount} : {...item}
+    });
+  }
+
   const contextObj = {
     remove: removeExpense,
-    // other context props
+    add: addExpense,
+    modify: modifyExpense,
   }
 
   setContext('context', contextObj);
@@ -37,9 +45,9 @@
 
 <Navbar />
 <main class="main" >
-  <ExpenseForm {addExpense} />
+  <ExpenseForm name={selectedExpense?.name} amount={selectedExpense?.amount} id={selectedExpense?.id}/>
   <Total title="Total amount" {total} />
-  <ExpenseList {expenses} on:edit={edit} />
+  <ExpenseList {expenses} on:edit={editExpense} />
   <button
     type="button"
     class="btn btn-primary btn-block"
