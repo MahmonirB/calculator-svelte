@@ -22,6 +22,11 @@
     expenses = [];
   }
 
+  function addExpense({ name, amount}) {
+    const newExpense = { name, amount, id: Math.random() * Date.now() };
+    expenses = [newExpense, ...expenses];
+  }
+
   const contextObj = {
     remove: removeExpense,
     // other context props
@@ -32,7 +37,7 @@
 
 <Navbar />
 <main class="main" >
-  <ExpenseForm />
+  <ExpenseForm {addExpense} />
   <Total title="Total amount" {total} />
   <ExpenseList {expenses} on:edit={edit} />
   <button

@@ -1,13 +1,18 @@
 <script>
   import Title from "./component/Title.svelte";
+  export let addExpense;
   let name = '';
   let amount = '';
   $: isEmpty = !name || !amount;
+
+  function handleSubmit() {
+    addExpense({ name, amount});
+  }
 </script>
 
 <section class="form">
     <Title title="Add expense" />
-    <form class="expense-form">
+    <form class="expense-form" on:submit|preventDefault={handleSubmit}>
         <div class="form-control">
             <label for="name">name</label>
             <input type="text" id="name" bind:value={name}>
