@@ -6,6 +6,7 @@
   import Total from "./component/Total.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
   let selectedExpense;
+  let showForm = true;
   let expenses = [...expensesData];
   $: total = expenses?.reduce((acc, value) => {
     return (acc += value?.amount)
@@ -33,11 +34,19 @@
       return item?.id === id ? {...item, name, amount} : {...item}
     });
   }
+  const handleClose = () => {
+    showForm = false;
+  }
+  const handleOpen = () => {
+    showForm = true;
+  }
 
   const contextObj = {
     remove: removeExpense,
     add: addExpense,
     modify: modifyExpense,
+    close: handleClose,
+    open: handleOpen,
   }
 
   setContext('context', contextObj);
@@ -45,7 +54,12 @@
 
 <Navbar />
 <main class="main" >
-  <ExpenseForm name={selectedExpense?.name} amount={selectedExpense?.amount} id={selectedExpense?.id}/>
+  {#if showForm}
+    <ExpenseForm
+      name={selectedExpense?.name}
+      amount={selectedExpense?.amount}
+      id={selectedExpense?.id}/>
+    {/if}
   <Total title="Total amount" {total} />
   <ExpenseList {expenses} on:edit={editExpense} />
   <button

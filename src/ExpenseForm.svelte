@@ -9,7 +9,7 @@
   $: isEmpty = !name || !amount;
   $: isEditting = !!id;
 
-  const { add: addExpense, modify: modifyExpense } = getContext('context');
+  const { add: addExpense, modify: modifyExpense, close } = getContext('context');
   function handleSubmit() {
     addExpense({ name, amount});
     name = '';
@@ -47,7 +47,7 @@
         >
             {isEditting ? "Edit Expense" : "Add expense"}
         </button>
-        <button class="close-btn">
+        <button class="close-btn" on:click={close}>
             <i class="fas fa-times"/>
             close
         </button>
