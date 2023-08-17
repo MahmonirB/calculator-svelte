@@ -17,6 +17,7 @@
 
   function editExpense(event) {
     const { id } = event.detail;
+    showForm = true;
     selectedExpense = expenses?.find(element => element.id === id);
   }
 
@@ -39,6 +40,7 @@
   }
   const handleOpen = () => {
     showForm = true;
+    selectedExpense = { name: '', amount: '', id: '' };
   }
 
   const contextObj = {
