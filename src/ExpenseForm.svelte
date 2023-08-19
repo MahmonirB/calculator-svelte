@@ -1,7 +1,7 @@
 <script>
   import { getContext } from "svelte";
   import Title from "./component/Title.svelte";
-
+  import { beforeUpdate, afterUpdate, onMount, onDestroy } from "svelte";
   export let name = '';
   export let amount = '';
   export let id = '';
@@ -21,6 +21,11 @@
     name = '';
     amount = '';
   }
+
+  onMount(() => console.log("---- on mount -----"));
+  onDestroy(() => console.log("---- on destroy -----"));
+  beforeUpdate(() => console.log("---- before update -----"));
+  afterUpdate(() => console.log("---- after update -----"));
 </script>
 
 <section class="form">
