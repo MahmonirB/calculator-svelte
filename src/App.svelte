@@ -5,6 +5,8 @@
   import expensesData from "./expenses";
   import Total from "./component/Total.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
+  import Modal from "./component/Modal.svelte";
+
   let selectedExpense;
   let showForm = true;
   let expenses = [...expensesData];
@@ -34,12 +36,14 @@
   function addExpense({ name, amount}) {
     const newExpense = { name, amount, id: Math.random() * Date.now() };
     expenses = [newExpense, ...expenses];
+    handleClose();
   }
 
   function modifyExpense({ name, amount, id }) {
     expenses = expenses?.map(item => {
       return item?.id === id ? {...item, name, amount} : {...item}
     });
+    handleClose();
   }
   const handleClose = () => {
     showForm = false;
@@ -79,11 +83,13 @@
 <Navbar />
 <main class="main" >
   {#if showForm}
-    <ExpenseForm
-      name={selectedExpense?.name}
-      amount={selectedExpense?.amount}
-      id={selectedExpense?.id}/>
-    {/if}
+    <Modal>
+      <ExpenseForm
+        name={selectedExpense?.name}
+        amount={selectedExpense?.amount}
+        id={selectedExpense?.id}/>
+    </Modal>
+  {/if}
   <Total title="Total amount" {total} />
   <ExpenseList {expenses} on:edit={editExpense} />
   <button

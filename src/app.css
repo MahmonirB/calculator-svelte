@@ -195,7 +195,6 @@ Single Expense
   padding: 1.3rem 1rem;
   border-radius: var(--mainBorderRadius);
   background: var(--mainWhite);
-  box-shadow: var(--lightShadow);
 }
 .single-expense h2 {
   margin-bottom: 0;
