@@ -1,5 +1,5 @@
 <script>
-  import { setContext } from "svelte";
+  import { setContext, onMount, onDestroy, afterUpdate } from "svelte";
   import ExpenseList from "./component/ExpenseList.svelte";
   import Navbar from "./component/Navbar.svelte";
   import expensesData from "./expenses";
@@ -10,7 +10,12 @@
   let expenses = [...expensesData];
   $: total = expenses?.reduce((acc, value) => {
     return (acc += value?.amount)
-  }, 0)
+  }, 0);
+
+  function saveExpenses() {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  }
+
   function removeExpense(id) {
     expenses = expenses.filter(item => item.id !== id);
   }
@@ -23,6 +28,7 @@
 
   function clearExpenses() {
     expenses = [];
+    handleClose();
   }
 
   function addExpense({ name, amount}) {
@@ -52,6 +58,22 @@
   }
 
   setContext('context', contextObj);
+
+  onMount(() => {
+    const expensesValue = localStorage.getItem('expenses');
+    if (expensesValue) {
+      expenses = JSON.parse(expensesValue);
+    }
+  });
+
+  afterUpdate(() => { 
+    saveExpenses();
+  });
+
+  onDestroy(() => { 
+    saveExpenses();
+  });
+
 </script>
 
 <Navbar />
