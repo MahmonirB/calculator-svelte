@@ -46,9 +46,9 @@
         >
             {isEditting ? "Edit Expense" : "Add expense"}
         </button>
-        <button class="close-btn" on:click={close}>
-            <i class="fas fa-times"/>
-            close
-        </button>
     </form>
+    <button class="close-btn" on:click={close}>
+        <i class="fas fa-times"/>
+        close
+    </button>
 </section>

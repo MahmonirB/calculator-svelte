@@ -2,14 +2,13 @@
   import { setContext, onMount, onDestroy, afterUpdate } from "svelte";
   import ExpenseList from "./component/ExpenseList.svelte";
   import Navbar from "./component/Navbar.svelte";
-  import expensesData from "./expenses";
   import Total from "./component/Total.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
   import Modal from "./component/Modal.svelte";
 
   let selectedExpense;
-  let showForm = true;
-  let expenses = [...expensesData];
+  let showForm = false;
+  let expenses = [];
   $: total = expenses?.reduce((acc, value) => {
     return (acc += value?.amount)
   }, 0);
