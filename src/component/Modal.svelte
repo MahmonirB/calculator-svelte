@@ -1,7 +1,10 @@
-<script></script>
+<script>
+  import { blur, fade, fly } from "svelte/transition";
 
-<div class="modal-container">
-    <div class="modal-content">
+</script>
+
+<div class="modal-container" in:blur out:fade>
+    <div class="modal-content" transition:fly={{ y: 200 }}>
         <slot></slot>
     </div>
 </div>
