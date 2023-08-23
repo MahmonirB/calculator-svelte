@@ -327,7 +327,6 @@ Github Users
 
 .user {
   margin: 2rem 0;
-  box-shadow: var(--lightShadow);
   display: grid;
   grid-template-columns: auto 1fr;
   border-radius: var(--mainBorderRadius);

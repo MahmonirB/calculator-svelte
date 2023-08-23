@@ -5,6 +5,7 @@
   import Total from "./component/Total.svelte";
   import ExpenseForm from "./ExpenseForm.svelte";
   import Modal from "./component/Modal.svelte";
+  import GithubAwait from "../githubAwait.svelte";
 
   let selectedExpense;
   let showForm = false;
@@ -100,4 +101,6 @@
   >
     Clear All Expenses
   </button>
+
+  <GithubAwait />
 </main>
