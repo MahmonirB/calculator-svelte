@@ -26,16 +26,16 @@
     <Title title={isEditting ? "Edit Expense" : "Add expense"} />
     <form class="expense-form" on:submit|preventDefault={isEditting ? handleEditSubmit : handleSubmit}>
         <div class="form-control">
-            <label for="name">name</label>
+            <label for="name">Name</label>
             <input type="text" id="name" bind:value={name}>
         </div>
         <div class="form-control">
-            <label for="amount">amount</label>
+            <label for="amount">Amount</label>
             <input type="number" id="amount" bind:value={amount}>
         </div>
         {#if isEmpty}
         <p class="form-empty">
-            Please fill out form fields
+            Please Fill Out Form Fields
         </p>
         {/if}
         <button
@@ -49,6 +49,6 @@
     </form>
     <button class="close-btn" on:click={close}>
         <i class="fas fa-times"/>
-        close
+        Close
     </button>
 </section>

@@ -5,7 +5,7 @@
 
 <nav class="nav">
     <div class="nav-center">
-      <h1 class="nav-title">Budget calculator</h1>
+      <h1 class="nav-title">Budget Calculator</h1>
       <button class="nav-btn" on:click={open}>
         <i class="far fa-plus-square"></i>
         Add item

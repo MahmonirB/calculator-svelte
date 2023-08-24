@@ -24,7 +24,7 @@
       <Expense {...item} on:edit />
     </div>
     {:else}
-      <h2>no exoenses added to the list</h2>
+      <h2>No Exoenses Added To The List</h2>
     {/each}
   </ul>
 </section>
